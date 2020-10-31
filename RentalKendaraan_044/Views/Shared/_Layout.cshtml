@@ -15,6 +15,28 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <style>
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            richness: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px;
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown:hover
+        .dropdown-content{
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -33,6 +55,18 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a href="#">Daftar Rental <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content" style="left:0;">
+                            <a href="#">https://localhost:44305/Customers</a>
+                            <a href="#">https://localhost:44305/Peminjaman</a>
+                            <a href="#">https://localhost:44305/Pengembalian</a>
+                            <a href="#">https://localhost:44305/Kendaraans</a>
+                            <a href="#">https://localhost:44305/JenisKendaraans</a>
+                            <a href="#">https://localhost:44305/KondisiKendaraan</a>
+                            <a href="#">https://localhost:44305/Jaminans</a>
+                            <a href="#">https://localhost:44305/Genders</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -9,11 +9,11 @@ using RentalKendaraan_044.Models;
 
 namespace RentalKendaraan_044.Controllers
 {
-    public class PeminjamenController : Controller
+    public class PeminjamanController : Controller
     {
         private readonly RentKendaraanContext _context;
 
-        public PeminjamenController(RentKendaraanContext context)
+        public PeminjamanController(RentKendaraanContext context)
         {
             _context = context;
         }

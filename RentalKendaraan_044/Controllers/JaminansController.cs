@@ -19,9 +19,22 @@ namespace RentalKendaraan_044.Controllers
         }
 
         // GET: Jaminans
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ktsd, string searchString)
         {
-            return View(await _context.Jaminan.ToListAsync());
+            var ktsdList = new List<string>();
+            var ktshQuery = from d in _context.Jaminan orderby d.IdJaminan.ToString() select d.IdJaminan.ToString();
+            ktsdList.AddRange(ktshQuery.Distinct());
+            ViewBag.ktsd = new SelectList(ktsdList);
+            var menu = from m in _context.Jaminan select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.IdJaminan.ToString().Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(ktsd))
+            {
+                menu = menu.Where(x => x.NamaJaminan == ktsd);
+            }
+            return View(await menu.ToListAsync());
         }
 
         // GET: Jaminans/Details/5

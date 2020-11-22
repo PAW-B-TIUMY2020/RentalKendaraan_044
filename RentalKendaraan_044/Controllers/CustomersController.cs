@@ -19,10 +19,22 @@ namespace RentalKendaraan_044.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ktsd, string searchString)
         {
-            var rentKendaraanContext = _context.Customer.Include(c => c.IdGenderNavigation);
-            return View(await rentKendaraanContext.ToListAsync());
+            var ktsdList = new List<string>();
+            var ktshQuery = from d in _context.Customer orderby d.Nik select d.Nik;
+            ktsdList.AddRange(ktshQuery.Distinct());
+            ViewBag.ktsd = new SelectList(ktsdList);
+            var menu = from m in _context.Customer.Include(k => k.IdGenderNavigation) select m;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NamaCustomer.Contains(searchString) || s.Alamat.Contains(searchString));
+            }
+            if (!string.IsNullOrEmpty(ktsd))
+            {
+                menu = menu.Where(x => x.Nik == ktsd);
+            }
+            return View(await menu.ToListAsync());
         }
 
         // GET: Customers/Details/5

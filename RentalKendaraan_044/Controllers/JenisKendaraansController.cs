@@ -22,17 +22,19 @@ namespace RentalKendaraan_044.Controllers
         public async Task<IActionResult> Index(string ktsd, string searchString)
         {
             var ktsdList = new List<string>();
-            var ktshQuery = from d in _context.JenisKendaraan orderby d.IdJenisKendaraan.ToString() select d.IdJenisKendaraan.ToString();
+            var ktshQuery = from d in _context.JenisKendaraan orderby d.NamaJenisKendaraan select d.NamaJenisKendaraan;
             ktsdList.AddRange(ktshQuery.Distinct());
             ViewBag.ktsd = new SelectList(ktsdList);
             var menu = from m in _context.JenisKendaraan select m;
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                menu = menu.Where(s => s.IdJenisKendaraan.ToString().Contains(searchString));
-            }
+            
             if (!string.IsNullOrEmpty(ktsd))
             {
                 menu = menu.Where(x => x.NamaJenisKendaraan == ktsd);
+            }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NamaJenisKendaraan.Contains(searchString));
             }
             return View(await menu.ToListAsync());
         }

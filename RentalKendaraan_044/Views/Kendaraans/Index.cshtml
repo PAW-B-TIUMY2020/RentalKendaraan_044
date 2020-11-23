@@ -4,16 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tambah Data Kendaraan</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Tambah Data Baru</a>
 </p>
-@using (Html.BeginForm("Index", "Kendaraan", FormMethod.Get))
+@using (Html.BeginForm("Index", "Kendaraans", FormMethod.Get))
 {
     <p>
-        Ketersediaan: @Html.DropDownList("ktsd", "Pilih Ketersediaan")
-        Cari Data: @Html.TextBox("SearchString")
+        Ketersediaan : @Html.DropDownList("ktsd", "Pilih Ketersediaan")
+        Cari Data : @Html.TextBox("searchString")
         <input type="submit" value="Filter"/>
     </p>
 }
@@ -21,19 +21,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaKendaraan)
+                @Html.DisplayName("Nama Kendaraan")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoPolisi)
+                @Html.DisplayName("No. Polisi")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoStnk)
+                @Html.DisplayName("No. Stnk")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ketersediaan)
+                @Html.DisplayName("Ketersediaan")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdJenisKendaraanNavigation)
+                @Html.DisplayName("Jenis Kendaraan")
             </th>
             <th></th>
         </tr>
@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.Ketersediaan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdJenisKendaraanNavigation.IdJenisKendaraan)
+                @Html.DisplayFor(modelItem => item.IdJenisKendaraanNavigation.NamaJenisKendaraan)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdKendaraan"><i class="fas fa-pen-alt"></i></a> |

@@ -4,15 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tambah Data Gender</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Tambah Data Baru</a>
 </p>
-@using (Html.BeginForm("Index", "Gender", FormMethod.Get))
+@using (Html.BeginForm("Index", "Genders", FormMethod.Get))
 {
     <p>
-        ID Gender: @Html.DropDownList("ktsd", "Pilih ID Gender")
+        Gender: @Html.DropDownList("ktsd", "Pilih Gender")
         Cari Data: @Html.TextBox("SearchString")
         <input type="submit" value="Filter" />
     </p>
@@ -21,7 +21,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaGender)
+                @Html.DisplayName("NamaGender")
             </th>
             <th></th>
         </tr>

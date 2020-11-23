@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tambah Data Customer</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Tambah Data Baru</a>
 </p>
-@using (Html.BeginForm("Index", "Customer", FormMethod.Get))
+@using (Html.BeginForm("Index", "Customers", FormMethod.Get))
 {
     <p>
         NIK: @Html.DropDownList("ktsd", "Pilih NIK")
@@ -21,19 +21,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaCustomer)
+                @Html.DisplayName("Nama Customer")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nik)
+                @Html.DisplayName("NIK")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Alamat)
+                @Html.DisplayName("Alamat")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoHp)
+                @Html.DisplayName("No. Hp")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdGenderNavigation)
+                @Html.DisplayName("Nama Gender")
             </th>
             <th></th>
         </tr>
@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.NoHp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdGenderNavigation.IdGender)
+                @Html.DisplayFor(modelItem => item.IdGenderNavigation.NamaGender)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCustomer"><i class="fas fa-pen-alt"></i></a> |

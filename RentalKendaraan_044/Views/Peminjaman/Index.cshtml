@@ -12,7 +12,7 @@
 @using (Html.BeginForm("Index", "Peminjaman", FormMethod.Get))
 {
     <p>
-        Tanggal Peminjaman: @Html.DropDownList("ktsd", "Pilih Tanggal")
+        Nama: @Html.DropDownList("ktsd", "Pilih Nama")
         Cari Data: @Html.TextBox("SearchString")
         <input type="submit" value="Filter" />
     </p>
@@ -21,19 +21,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TglPeminjaman)
+                @Html.DisplayName("Tanggal Peminjaman")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Biaya)
+                @Html.DisplayName("Biaya")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCustomerNavigation)
+                @Html.DisplayName("Nama Customer")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdJaminanNavigation)
+                @Html.DisplayName("Nama Jaminan")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdKendaraanNavigation)
+                @Html.DisplayName("Nama Kendaraan")
             </th>
             <th></th>
         </tr>
@@ -49,13 +49,13 @@
                     @Html.DisplayFor(modelItem => item.Biaya)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdCustomerNavigation.IdCustomer)
+                    @Html.DisplayFor(modelItem => item.IdCustomerNavigation.NamaCustomer)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdJaminanNavigation.IdJaminan)
+                    @Html.DisplayFor(modelItem => item.IdJaminanNavigation.NamaJaminan)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.IdKendaraan)
+                    @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.NamaKendaraan)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdPeminjaman"><i class="fas fa-pen-alt"></i></a> |
@@ -66,3 +66,4 @@
         }
     </tbody>
 </table>
+

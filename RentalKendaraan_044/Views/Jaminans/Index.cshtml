@@ -9,10 +9,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-@using (Html.BeginForm("Index", "Jaminan", FormMethod.Get))
+@using (Html.BeginForm("Index", "Jaminans", FormMethod.Get))
 {
     <p>
-        ID Jaminan: @Html.DropDownList("ktsd", "Pilih ID Jaminan")
+        Jaminan: @Html.DropDownList("ktsd", "Pilih Jaminan")
         Cari Data: @Html.TextBox("SearchString")
         <input type="submit" value="Filter" />
     </p>
@@ -21,7 +21,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaJaminan)
+                @Html.DisplayName("Nama Jaminan")
             </th>
             <th></th>
         </tr>

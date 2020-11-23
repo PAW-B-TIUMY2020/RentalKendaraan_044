@@ -4,15 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Tambah Data Pengembalian</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Tambah Data Baru</a>
 </p>
-@using (Html.BeginForm("Index", "Pengembalian", FormMethod.Get))
+@using (Html.BeginForm("Index", "Pengembalians", FormMethod.Get))
 {
     <p>
-        Tanggal Pengembalian: @Html.DropDownList("ktsd", "Pilih Tanggal")
+        Kondisi: @Html.DropDownList("ktsd", "Pilih Kondisi")
         Cari Data: @Html.TextBox("SearchString")
         <input type="submit" value="Filter" />
     </p>
@@ -21,16 +21,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TglPengembalian)
+                @Html.DisplayName("Tanggal Pengembalian")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Denda)
+                @Html.DisplayName("Denda")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdKondisiNavigation)
+                @Html.DisplayName("Nama Kondisi")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPeminjamanNavigation)
+                @Html.DisplayName("Tanggal Peminjaman")
             </th>
             <th></th>
         </tr>
@@ -46,10 +46,10 @@
                     @Html.DisplayFor(modelItem => item.Denda)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdKondisiNavigation.IdKondisi)
+                    @Html.DisplayFor(modelItem => item.IdKondisiNavigation.NamaKondisi)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdPeminjamanNavigation.IdPeminjaman)
+                    @Html.DisplayFor(modelItem => item.IdPeminjamanNavigation.TglPeminjaman)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.IdPengembalian"><i class="fas fa-pen-alt"></i></a> |

@@ -21,22 +21,9 @@ namespace RentalKendaraan_044.Controllers
         // GET: Peminjamen
         public async Task<IActionResult> Index(string ktsd, string searchString, string sortOrder, string currentFilter, int? pageNumber)
         {
-            /*ViewData["CurrentSort"] = sortOrder;
-            if (searchString != null)
-            {
-                pageNumber = 1;
-            } else
-            {
-                searchString = currentFilter;
-            }
-            ViewData["CurrentFilter"] = searchString;
-
-            //Definisi jumlah data pada halaman
-            var pageSize = 5;
-
-            //untuk sorting
-            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";*/
+            /*
+            
+            */
 
             var ktsdList = new List<string>();
             var ktshQuery = from d in _context.Peminjaman orderby d.IdCustomerNavigation.NamaCustomer select d.IdCustomerNavigation.NamaCustomer;
@@ -57,7 +44,26 @@ namespace RentalKendaraan_044.Controllers
                 menu = menu.Where(x => x.IdCustomerNavigation.NamaCustomer == ktsd);
             }
 
-            /*switch (sortOrder)
+            //membuat pagedList
+            ViewData["CurrentSort"] = sortOrder;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            //Definisi jumlah data pada halaman
+            var pageSize = 5;
+
+            //untuk sorting
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
             {
                 case "name_desc":
                     menu = menu.OrderByDescending(s => s.IdCustomerNavigation.NamaCustomer);
@@ -71,10 +77,10 @@ namespace RentalKendaraan_044.Controllers
                 default:
                     menu = menu.OrderBy(s => s.IdCustomerNavigation.NamaCustomer);
                     break;
-            }*/
+            }
 
-            //return View(await PaginatedList<Peminjaman>.CreateAsync(menu.AsNoTracking(), pageNumber ?? 1, pageSize));
-            return View(await menu.ToListAsync());
+            return View(await PaginatedList<Peminjaman>.CreateAsync(menu.AsNoTracking(), pageNumber ?? 1, pageSize));
+            //return View(await menu.ToListAsync());
         }
 
         // GET: Peminjamen/Details/5

@@ -17,23 +17,32 @@
     </environment>
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
     <style>
+        li.dropdown {
+            display: inline-block;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
-            richness: 0;
             background-color: #f9f9f9;
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown:hover
-        .dropdown-content{
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #f1f1f1;
+                }
+
+        .dropdown:hover .dropdown-content {
             display: block;
         }
     </style>
@@ -55,16 +64,17 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a href="#">Daftar Rental <i class="fas fa-caret-down"></i></a>
-                        <div class="dropdown-content" style="left:0;">
-                            <a href="#">https://localhost:44305/Customers</a>
-                            <a href="#">https://localhost:44305/Peminjaman</a>
-                            <a href="#">https://localhost:44305/Pengembalian</a>
-                            <a href="#">https://localhost:44305/Kendaraans</a>
-                            <a href="#">https://localhost:44305/JenisKendaraans</a>
-                            <a href="#">https://localhost:44305/KondisiKendaraan</a>
-                            <a href="#">https://localhost:44305/Jaminans</a>
-                            <a href="#">https://localhost:44305/Genders</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Daftar Rental <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="https://localhost:44305/Customers">Customer</a>
+                            <a href="https://localhost:44305/Peminjaman">Peminjaman</a>
+                            <a href="https://localhost:44305/Pengembalians">Pengembalian</a>
+                            <a href="https://localhost:44305/Kendaraans">Kendaraan</a>
+                            <a href="https://localhost:44305/JenisKendaraans">Jenis Kendaraan</a>
+                            <a href="https://localhost:44305/KondisiKendaraans">Kondisi Kendaraan</a>
+                            <a href="https://localhost:44305/Jaminans">Jaminan</a>
+                            <a href="https://localhost:44305/Genders">Gender</a>
                         </div>
                     </li>
                 </ul>
